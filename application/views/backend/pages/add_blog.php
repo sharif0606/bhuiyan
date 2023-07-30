@@ -24,7 +24,8 @@
                                     <select id="cat-name" name="fk_news_id" class="form-control col-md-7 col-xs-12" required="required">
                                        <option></option>
                                         <?php
-                                        $category_info = $this->db->query("select * from tbl_category where category_type=1 or category_type=2")->result();
+                                        //$category_info = $this->db->query("select * from tbl_category where category_type=1 or category_type=2")->result();
+                                        $category_info = $this->db->query("select * from tbl_category where category_type=4")->result();
                                         foreach ($category_info as $category) {
                                         ?>
                                             <option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?></option>

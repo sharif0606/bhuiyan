@@ -137,10 +137,10 @@
 										<li><a href="<?php echo base_url(); ?>customer"><i class="fa fa-users"></i> Customer</a></li>
                                       
                                         
-                                        <li><a><i class="fa fa-edit"></i>Blog / Sliders<span class="fa fa-chevron-down"></span></a>
+                                        <li><a><i class="fa fa-edit"></i><!--Blog--> Brand / Sliders<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
-                                                <li><a href="<?php echo base_url('add-blog'); ?>">Add Blog / Slider</a></li>
-                                                <li><a href="<?php echo base_url('blog-list'); ?>">Blog / Slider Lists</a></li>
+                                                <li><a href="<?php echo base_url('add-blog'); ?>">Add <!--Blog--> Brand / Slider</a></li>
+                                                <li><a href="<?php echo base_url('blog-list'); ?>"><!--Blog--> Brand / Slider Lists</a></li>
                                             </ul>
                                         </li>
                                         

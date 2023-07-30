@@ -16,6 +16,8 @@ class Master extends CI_Controller {
 		$data['all_photo_view_info']=$this->photo_view_model->all_photo_view_info();
 		$data['slide_news']=$this->master_model->slide_news();
 		$data['slide_news_1st']=$this->master_model->slide_news_1st();
+		$data['all_category_info']=$this->category_model->all_category_front_show_info();
+		$data['all_brand']=$this->blog_model->all_brand();
 		$data['main_content']=$this->load->view('frontend/pages/home',$data,true);
 		$this->load->view('frontend/master',$data);
     }

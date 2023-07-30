@@ -38,7 +38,18 @@ class Category_model extends CI_Model {
     public function all_category_info() {
         $this->db->select('*');
         $this->db->from('tbl_category');
-        //$this->db->where('status',1);
+        //$this->db->where('show_front',1);
+        $this->db->order_by('category_id', 'desc');
+        $query_result = $this->db->get();
+        $category_info = $query_result->result();
+        return $category_info;
+    }
+
+    public function all_category_front_show_info() {
+        $this->db->select('*');
+        $this->db->from('tbl_category');
+        $this->db->where('show_front',1);
+        $this->db->where('category_type',3);
         $this->db->order_by('category_id', 'desc');
         $query_result = $this->db->get();
         $category_info = $query_result->result();

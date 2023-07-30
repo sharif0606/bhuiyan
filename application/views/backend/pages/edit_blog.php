@@ -25,7 +25,8 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12"> 
                                     <select id="cat-name" name="fk_news_id" class="form-control col-md-7 col-xs-12" required="required">
                                         <?php
-                                        $query=$this->db->query("select * from tbl_category where category_type=1 or category_type=2");
+                                        //$query=$this->db->query("select * from tbl_category where category_type=1 or category_type=2");
+                                        $query=$this->db->query("select * from tbl_category where category_type=4");
                                         $query_result=$query->result();
                                         foreach ($query_result as $category) {
                                             ?>

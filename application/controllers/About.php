@@ -16,6 +16,9 @@ class About extends CI_Controller{
 		
 		$data['page_data']=$this->page_model->view_page_by_id($about_services_type);
 		
+        $data['all_brand']=$this->blog_model->all_brand();
+        $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
+        
         $data['main_content']=$this->load->view('frontend/pages/about_us',$data,true);
         $this->load->view('frontend/master', $data);
     } 

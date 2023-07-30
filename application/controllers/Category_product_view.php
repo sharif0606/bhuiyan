@@ -114,7 +114,8 @@ class Category_product_view extends CI_Controller{
             $end = ($this->uri->segment(2) == floor($config['total_rows']/ $config['per_page']))? $config['total_rows'] : (int)$this->uri->segment(2) * $config['per_page'] + $config['per_page'];
             $data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
         }
-        
+        $data['all_brand']=$this->blog_model->all_brand();
+        $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
         $data['main_content']=$this->load->view('frontend/pages/product_view',$data,true);
         $this->load->view('frontend/master',$data);
     }

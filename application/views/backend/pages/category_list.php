@@ -36,7 +36,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <?php $type=array("","Slider","Blog","Product"); ?>
+                                    <?php $type=array("","Slider","Blog","Product","Brand"); ?>
                                     <?php $showF=array("No","Yes"); ?>
                                     <?php foreach ($all_category_info as $data) { ?>
 

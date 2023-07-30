@@ -30,9 +30,10 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="category_type" class="form-control">
                                         <option value="0">Select Type</option>
-                                        <option value="1">Slider</option>
-                                        <option value="2">Blog</option>
+                                        <!-- <option value="1">Slider</option>
+                                        <option value="2">Blog</option> -->
                                         <option value="3">Product</option>
+                                        <!-- <option value="4">Brand</option> -->
                                     </select>
                                 </div>
                             </div>

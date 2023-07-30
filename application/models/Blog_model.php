@@ -132,7 +132,8 @@ class Blog_model extends CI_Model {
         $this->db->select('tbl_news.*,tbl_category.category_name');
         $this->db->from('tbl_category');
         $this->db->join('tbl_news', 'tbl_category.category_id=tbl_news.fk_news_id', 'inner');
-        $this->db->where_in('tbl_category.category_type',array(1,2));
+        //$this->db->where_in('tbl_category.category_type',array(1,2));
+        $this->db->where_in('tbl_category.category_type',array(1,4));
         $this->db->order_by('news_id','desc');
         $query = $this->db->get();
         
@@ -155,7 +156,17 @@ class Blog_model extends CI_Model {
         $this->db->where_in('tbl_category.category_type',array(1,2));
         return $this->db->count_all_results();
     }
-    
+    public function all_brand() 
+    {
+        $this->db->select('tbl_news.*');
+        $this->db->from('tbl_news');
+        $this->db->join('tbl_category', 'tbl_category.category_id=tbl_news.fk_news_id', 'inner');
+        $this->db->where_in('tbl_category.category_type',array(4));
+        $this->db->order_by('news_id','desc');
+        $query = $this->db->get();
+        $brand = $query->result();
+        return $brand;
+    }
 
 
 }

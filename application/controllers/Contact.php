@@ -14,6 +14,9 @@ class Contact extends CI_Controller{
 		$data['all_meta_data'] = $this->meta_model->all_meta_data();
 		$data['pro_cats']=$this->master_model->pro_cats();
 		
+        $data['all_brand']=$this->blog_model->all_brand();
+        $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
+        
         $data['main_content']=$this->load->view('frontend/pages/contact_us',$data,true);
         $this->load->view('frontend/master', $data);
     } 

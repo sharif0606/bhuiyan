@@ -46,6 +46,7 @@
                                         <option value="1" <?= $select_category_by_id->category_type==1?"selected":""; ?>>Slider</option>
                                         <option value="2" <?= $select_category_by_id->category_type==2?"selected":""; ?>>Blog</option>
                                         <option value="3" <?= $select_category_by_id->category_type==3?"selected":""; ?>>Product</option>
+                                        <option value="4" <?= $select_category_by_id->category_type==4?"selected":""; ?>>Brand</option>
                                     </select>
                                 </div>
                             </div>

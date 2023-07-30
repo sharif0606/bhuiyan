@@ -56,6 +56,9 @@ class News_view extends CI_Controller{
 	  $data['related_news_view']=$this->news_view_model->related_news_view($news_id,$cat_id);
      
       // $data['latest_news_view_info']=$this->news_view_model->latest_news_view_info();
+
+      $data['all_brand']=$this->blog_model->all_brand();
+      $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
 	  
        $data['main_content']=$this->load->view('frontend/pages/news_view',$data,true);
 	   
