@@ -22,7 +22,8 @@ class Category_product_view extends CI_Controller{
             $data['all_blog_data']=$this->blog_view_model->all_blog_filter_info($pro_cats_id,$q);
         else
             $data['all_blog_data']=$this->blog_view_model->all_blog_filter_info($pro_cats_id);
-        
+            $data['all_brand']=$this->blog_model->all_brand();
+            $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
         $data['main_content']=$this->load->view('frontend/pages/category_view',$data,true);
         $this->load->view('frontend/master',$data);
     }
