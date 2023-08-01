@@ -67,8 +67,9 @@ class Master_model extends CI_Model {
         $this->db->where('fk_news_id <>',1);
         $this->db->where('news_status',1);		
         $this->db->where($type,1);		
-        $this->db->order_by('news_id', 'DESC');
-        $this->db->limit('9');
+        //$this->db->order_by('news_id', 'DESC');
+        $this->db->order_by('RAND()'); // Order the results randomly
+        $this->db->limit('4');
         $query_result = $this->db->get();
         $res = $query_result->result();
         return $res;

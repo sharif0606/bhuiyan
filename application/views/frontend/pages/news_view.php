@@ -71,18 +71,14 @@
                       data-bs-parent="#accordionExample"
                     >
                       <div class="accordion-body">
-                        <strong
-                          >This is the first item's accordion body.</strong
-                        >
+                        <strong>This is the first item's accordion body.</strong>
                         <?= $v_news->news_description;?>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="mt-5">
-                  <a id="our-prodcut" href="#product-catagory"
-                    >Submit Your Information for Order</a
-                  >
+                  <a id="our-prodcut" href="#product-catagory">Submit Your Information for Order</a>
                 </div>
               </div>
             </div>

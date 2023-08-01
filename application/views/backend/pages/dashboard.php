@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title text-center">
-                        <h1 class="elegantshadow">SM MARINE SERVICE</h1>
+                        <h1 class="elegantshadow">Bhuiyan</h1>
                         <div class="clearfix"></div>
                     </div>
                    

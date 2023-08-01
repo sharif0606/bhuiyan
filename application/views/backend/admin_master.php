@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> SM MARINE Service</title>
+        <title> Bhuiyan</title>
         
     
         
@@ -91,7 +91,7 @@
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
-                            <a href="<?php echo base_url(); ?>dashboard" class="site_title"> <span> SM MARINE SERVICE </span></a>
+                            <a href="<?php echo base_url(); ?>dashboard" class="site_title"> <span> Bhuiyan </span></a>
                         </div>
                         <div class="clearfix"></div>
                         <!-- menu profile quick info -->

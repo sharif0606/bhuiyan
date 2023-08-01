@@ -6,7 +6,7 @@ const smImg = document.getElementsByClassName("sm-img");
 smImg[0].onclick = function () {
   mainImg.src = smImg[0].src;
 };
-smImg[1].onclick = function () {
+/*mImg[1].onclick = function () {
   mainImg.src = smImg[1].src;
 };
 smImg[2].onclick = function () {
@@ -17,7 +17,7 @@ smImg[3].onclick = function () {
 };
 smImg[4].onclick = function () {
   mainImg.src = smImg[4].src;
-};
+};*/
 
 // product page order submit
 
