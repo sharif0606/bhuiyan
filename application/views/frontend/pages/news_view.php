@@ -35,12 +35,17 @@
                   alt=""
                 />
               </div>
+              <?php //print_r($product_images); ?>
               <div class="product-galarry-img my-3 p-3 border rounded shadow">
+              <?php foreach($product_images as $p) { ?>
+              
                 <img
                   class="img-fluid mx-2 sm-img"
-                  src="<?= base_url().$v_news->news_image;?>"
+                  src="<?= base_url().$p->news_image;?>"
                   alt=""
                 />
+             
+              <?php } ?>
               </div>
             </div>
             <div class="col-sm-12 col-md-6">

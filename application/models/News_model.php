@@ -1,8 +1,10 @@
-<?php   if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class News_model extends CI_Model {
+class News_model extends CI_Model
+{
 
-    public function save_news_info() {
+    public function save_news_info()
+    {
         $data = array();
         $data['fk_news_id'] = $this->input->post('fk_news_id', true);
         $data['sub_category_id'] = $this->input->post('sub_category_id', true);
@@ -11,54 +13,122 @@ class News_model extends CI_Model {
         $data['condition_p'] = $this->input->post('condition_p', true);
         $data['new_item'] = $this->input->post('new_item', true);
         $data['popular_item'] = $this->input->post('popular_item', true);
-		
-        $data['news_description'] = $this->input->post('news_description',false);
-		
+
+        $data['news_description'] = $this->input->post('news_description', false);
+
         $data['item_code'] = $this->input->post('item_code', true);
         $data['brand'] = $this->input->post('brand', true);
         $data['meta_des'] = $this->input->post('meta_des', true);
         $data['meta_key'] = $this->input->post('meta_key', true);
         $data['news_status'] = $this->input->post('news_status', true);
-		
+
         date_default_timezone_set('Asia/Dhaka');
-        
-        $data['post_time']= date("H:i");
-        $data['post_date']=date("F j, Y");
-		$data['post_date_small']=date("F j");
-		
-        $sdata=array(); 
-        $error="";
-        
-        $config['upload_path']='uploads/PostImages/';
-        $config['allowed_types']='gif|jpg|jpeg|png';
-        $config['max_size']=200000;
-        $config['max_width']=200000;
-        $config['max_height']=200000;
-        
-        $this->load->library('upload',$config);
-		
-        if(!$this->upload->do_upload('news_image')){
-            $error=$this->upload->display_errors();
+
+        $data['post_time'] = date("H:i");
+        $data['post_date'] = date("F j, Y");
+        $data['post_date_small'] = date("F j");
+
+        $sdata = array();
+        $error = "";
+
+        $config['upload_path'] = 'uploads/PostImages/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['max_size'] = 200000;
+        $config['max_width'] = 200000;
+        $config['max_height'] = 200000;
+
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('image')) {
+            $error = $this->upload->display_errors();
             echo $error;
-        }else{
-            $sdata=$this->upload->data();
-            $data['news_image']=$config['upload_path'].$sdata['file_name'];
+        } else {
+            $sdata = $this->upload->data();
+            $data['news_image'] = $config['upload_path'] . $sdata['file_name'];
+
+            // Load the image manipulation library for resizing
+            $this->load->library('image_lib');
+
+            // Resize the uploaded image while maintaining aspect ratio
+            $resize_config['image_library'] = 'gd2';
+            $resize_config['source_image'] =  $data['news_image'];
+            $resize_config['maintain_ratio'] = TRUE;
+            $resize_config['width'] = 800; // Adjust as needed
+            $resize_config['height'] = 800; // Adjust as needed
+
+            $this->image_lib->initialize($resize_config);
+
+            if (!$this->image_lib->resize()) {
+                echo $this->image_lib->display_errors();
+            }
         }
+
+        $upload_data = array();
         $this->db->insert('tbl_news', $data);
+        $insert_id = $this->db->insert_id();
+        // Loop through each uploaded file
+        foreach ($_FILES['news_image']['name'] as $key => $value) {
+            $_FILES['userfile']['name'] = $_FILES['news_image']['name'][$key];
+            $_FILES['userfile']['type'] = $_FILES['news_image']['type'][$key];
+            $_FILES['userfile']['tmp_name'] = $_FILES['news_image']['tmp_name'][$key];
+            $_FILES['userfile']['error'] = $_FILES['news_image']['error'][$key];
+            $_FILES['userfile']['size'] = $_FILES['news_image']['size'][$key];
+
+            // Generate a unique filename by combining original filename and timestamp
+            $file_name = time() . '_' . $_FILES['userfile']['name'];
+
+            $config['file_name'] = $file_name;  // Set the unique file name
+            $this->upload->initialize($config); // Initialize the upload configuration
+
+            if (!$this->upload->do_upload('userfile')) {
+                $error = $this->upload->display_errors();
+                echo $error;
+            } else {
+                // Image uploaded successfully
+                $upload_data[] = $this->upload->data();
+                $image_data = array('news_image' => $config['upload_path'] . $file_name, 'product_id' => $insert_id);
+                if (!empty($image_data)) {
+                    // Insert image data into the database
+                    $this->db->insert('product_images', $image_data);
+                }
+            }
+        }
+
+        // Load the image manipulation library for resizing
+        $this->load->library('image_lib');
+
+        // Loop through uploaded images and resize
+        foreach ($upload_data as $key => $image) {
+            // Resize the image while maintaining aspect ratio
+            $resize_config['image_library'] = 'gd2';
+            $resize_config['source_image'] = $config['upload_path'] . $image['file_name'];
+            $resize_config['maintain_ratio'] = TRUE;
+            $resize_config['width'] = 800; // Adjust as needed
+            $resize_config['height'] = 800; // Adjust as needed
+            $img_data['news_image'] = $config['upload_path'] . $sdata['file_name'];
+            $this->image_lib->initialize($resize_config);
+
+            if (!$this->image_lib->resize()) {
+                echo $this->image_lib->display_errors();
+            }
+        }
     }
 
-    public function all_news_info() {
+    public function all_news_info()
+    {
         $this->db->select('tbl_news.*,tbl_category.category_name');
         $this->db->from('tbl_category');
         $this->db->join('tbl_news', 'tbl_category.category_id=tbl_news.fk_news_id', 'inner');
-        $this->db->where('tbl_category.category_type',3);
+        $this->db->where('tbl_category.category_type', 3);
         $this->db->order_by('news_id', 'desc');
         $query_result = $this->db->get();
         $news_info = $query_result->result();
         return $news_info;
     }
 
-    public function all_news_info_by_category($category_id) {
+    public function all_news_info_by_category($category_id)
+    {
         $this->db->select('tbl_news.*,tbl_category.category_name');
         $this->db->from('tbl_category');
         $this->db->join('tbl_news', 'tbl_category.category_id=tbl_news.fk_news_id', 'inner');
@@ -70,24 +140,27 @@ class News_model extends CI_Model {
         return $news_info;
     }
 
-    public function delete_news_info($news_id) {
+    public function delete_news_info($news_id)
+    {
         $this->db->where('news_id', $news_id);
         $this->db->delete('tbl_news');
     }
 
-   public function select_news_by_id($news_id) {
+    public function select_news_by_id($news_id)
+    {
         $this->db->select('*');
         $this->db->from('tbl_news');
-		$this->db->join('tbl_category','tbl_category.category_id=tbl_news.fk_news_id','full');
-        		
+        $this->db->join('tbl_category', 'tbl_category.category_id=tbl_news.fk_news_id', 'full');
+
         $this->db->where('news_id', $news_id);
         $query_row = $this->db->get();
         $select_news_by_id = $query_row->row();
-       
+
         return $select_news_by_id;
     }
 
-    public function update_news_info() {
+    public function update_news_info()
+    {
         $data = array();
         $news_id = $this->input->post('news_id', true);
 
@@ -100,43 +173,102 @@ class News_model extends CI_Model {
         $data['news_status'] = $this->input->post('news_status', true);
         $data['new_item'] = $this->input->post('new_item', true);
         $data['popular_item'] = $this->input->post('popular_item', true);
-		
+
         $data['item_code'] = $this->input->post('item_code', true);
         $data['brand'] = $this->input->post('brand', true);
         $data['meta_des'] = $this->input->post('meta_des', true);
         $data['meta_key'] = $this->input->post('meta_key', true);
-       
+
         date_default_timezone_set('Asia/Dhaka');
-        
-        $data['post_time']= date("H:i");
-        $data['post_date']=date("F j, Y");
-        $data['post_date_small']=date("F j");
-        
-        $sdata=array(); 
-        $error="";
-        
-        $config['upload_path']='uploads/PostImages/';
-        $config['allowed_types']='gif|jpg|jpeg|png';
-        $config['max_size']=200000;
-        $config['max_width']=200000;
-        $config['max_height']=200000;
-        
-        $this->load->library('upload',$config);
-		
-        if(!$this->upload->do_upload('news_image'))
-        {
-            $error=$this->upload->display_errors();
-            //echo $error;
-        }else{
-            $sdata=$this->upload->data();
-            $data['news_image']=$config['upload_path'].$sdata['file_name'];
+
+        $data['post_time'] = date("H:i");
+        $data['post_date'] = date("F j, Y");
+        $data['post_date_small'] = date("F j");
+
+        $sdata = array();
+        $error = "";
+
+        $config['upload_path'] = 'uploads/PostImages/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['max_size'] = 200000;
+        $config['max_width'] = 200000;
+        $config['max_height'] = 200000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('image')) {
+            $error = $this->upload->display_errors();
+            echo $error;
+        } else {
+            $sdata = $this->upload->data();
+            $data['news_image'] = $config['upload_path'] . $sdata['file_name'];
+
+            // Load the image manipulation library for resizing
+            $this->load->library('image_lib');
+
+            // Resize the uploaded image while maintaining aspect ratio
+            $resize_config['image_library'] = 'gd2';
+            $resize_config['source_image'] =  $data['news_image'];
+            $resize_config['maintain_ratio'] = TRUE;
+            $resize_config['width'] = 800; // Adjust as needed
+            $resize_config['height'] = 800; // Adjust as needed
+
+            $this->image_lib->initialize($resize_config);
+
+            if (!$this->image_lib->resize()) {
+                echo $this->image_lib->display_errors();
+            }
         }
-        
-        
+
+        $upload_data = array();
         $this->db->where('news_id', $news_id);
         $this->db->update('tbl_news', $data);
+        // Loop through each uploaded file
+        foreach ($_FILES['news_image']['name'] as $key => $value) {
+            $_FILES['userfile']['name'] = $_FILES['news_image']['name'][$key];
+            $_FILES['userfile']['type'] = $_FILES['news_image']['type'][$key];
+            $_FILES['userfile']['tmp_name'] = $_FILES['news_image']['tmp_name'][$key];
+            $_FILES['userfile']['error'] = $_FILES['news_image']['error'][$key];
+            $_FILES['userfile']['size'] = $_FILES['news_image']['size'][$key];
+
+            // Generate a unique filename by combining original filename and timestamp
+            $file_name = time() . '_' . $_FILES['userfile']['name'];
+
+            $config['file_name'] = $file_name;  // Set the unique file name
+            $this->upload->initialize($config); // Initialize the upload configuration
+
+            if (!$this->upload->do_upload('userfile')) {
+                $error = $this->upload->display_errors();
+                echo $error;
+            } else {
+                // Image uploaded successfully
+                $upload_data[] = $this->upload->data();
+                $image_data = array('news_image' => $config['upload_path'] . $file_name, 'product_id' =>$news_id);
+                if (!empty($image_data)) {
+                    // Insert image data into the database
+                    $this->db->insert('product_images', $image_data);
+                }
+            }
+        }
+
+        // Load the image manipulation library for resizing
+        $this->load->library('image_lib');
+
+        // Loop through uploaded images and resize
+        foreach ($upload_data as $key => $image) {
+            // Resize the image while maintaining aspect ratio
+            $resize_config['image_library'] = 'gd2';
+            $resize_config['source_image'] = $config['upload_path'] . $image['file_name'];
+            $resize_config['maintain_ratio'] = TRUE;
+            $resize_config['width'] = 800; // Adjust as needed
+            $resize_config['height'] = 800; // Adjust as needed
+            $img_data['news_image'] = $config['upload_path'] . $sdata['file_name'];
+            $this->image_lib->initialize($resize_config);
+
+            if (!$this->image_lib->resize()) {
+                echo $this->image_lib->display_errors();
+            }
+        }
+
     }
-    
-
-
 }

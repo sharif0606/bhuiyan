@@ -59,8 +59,8 @@ class News_view extends CI_Controller{
 
       $data['all_brand']=$this->blog_model->all_brand();
       $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
-	  
-       $data['main_content']=$this->load->view('frontend/pages/news_view',$data,true);
+	   $data['product_images'] = $this->news_view_model->news_view_product_images($news_id);
+      $data['main_content']=$this->load->view('frontend/pages/news_view',$data,true);
 	   
        $this->load->view('frontend/master',$data);
     }

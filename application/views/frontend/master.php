@@ -229,10 +229,10 @@
                         <strong>Our Social Networks</strong>
                     </p>
                     <div class="social-icon">
-                        <i class="bi bi-facebook"></i>
-                        <i class="bi bi-youtube"></i>
-                        <i class="bi bi-linkedin"></i>
-                        <i class="bi bi-twitter"></i>
+                        <a href="<?= $all_meta_data->fb_url; ?>"><i class="bi bi-facebook"></i></a>
+                        <a href="<?= $all_meta_data->youtube_url; ?>"><i class="bi bi-youtube"></i></a>
+                        <a href="<?= $all_meta_data->linkedin_url; ?>"><i class="bi bi-linkedin"></i></a>
+                        <a href="<?= $all_meta_data->twitter_url;?>"><i class="bi bi-twitter"></i></a>
                     </div>
                 </div>
             </div>

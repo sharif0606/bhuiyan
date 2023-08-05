@@ -56,6 +56,14 @@ class News_view_model extends CI_Model {
         $news_title_view_info = $query_row->row();
         return $news_title_view_info;
     }
+    public function news_view_product_images($news_id){
+        $this->db->select('*');
+        $this->db->from('product_images');
+        $this->db->where('product_id',$news_id);
+        $query_result = $this->db->get();
+        $news_view_product_images = $query_result->result();
+        return $news_view_product_images;
+    }
 	
      public function category_name_view_info($news_id) {
         

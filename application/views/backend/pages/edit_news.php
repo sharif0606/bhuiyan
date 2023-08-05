@@ -51,6 +51,8 @@
                                     </select>
                                 </div>
                             </div>
+
+
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cat-name">Sub Category </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12"> 
@@ -87,11 +89,25 @@
 
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"> Photo <span class="">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"> Cover Photo <span class="">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input style="padding:0;margin-bottom:10px;" type="file" id="pro-price" name="news_image" class="form-control col-md-7 col-xs-12" />
+                                    <input style="padding:0;margin-bottom:10px;" type="file" id="pro-price" name="image" class="form-control col-md-7 col-xs-12" />
                                     <img src="<?php echo base_url().$select_news_by_id->news_image;?>" width="70" height="40">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pro-name">Gallery Photo <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input style="padding:0;" type="file" id="last-name" name="news_image[]" class="form-control col-md-7 col-xs-12" multiple="multiple">
+                                    <?php  
+                                    $product_images = $this->db->query("select * from product_images where product_id = $select_news_by_id->news_id")->result();
+                                    foreach($product_images as $p){ 
+                                    ?>
+                                    <img src="<?php echo base_url().$p->news_image;?>" width="70" height="40">
+                                    <?php } ?>
                                 </div>
                             </div>
                             

@@ -133,8 +133,8 @@
                                                 <li><a href="<?php echo base_url(); ?>all_news/news_list">Product Lists</a></li>
                                             </ul>
                                         </li>
-										<li><a href="<?php echo base_url(); ?>order"><i class="fa fa-edit"></i> Order</a></li>
-										<li><a href="<?php echo base_url(); ?>customer"><i class="fa fa-users"></i> Customer</a></li>
+										<!-- <li><a href="<?php echo base_url(); ?>order"><i class="fa fa-edit"></i> Order</a></li>
+										<li><a href="<?php echo base_url(); ?>customer"><i class="fa fa-users"></i> Customer</a></li> -->
                                       
                                         
                                         <li><a><i class="fa fa-edit"></i><!--Blog--> Brand / Sliders<span class="fa fa-chevron-down"></span></a>
@@ -144,19 +144,19 @@
                                             </ul>
                                         </li>
                                         
-                                        <li><a><i class="fa fa-edit"></i> Gallary<span class="fa fa-chevron-down"></span></a>
+                                        <!-- <li><a><i class="fa fa-edit"></i> Gallary<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 <li><a href="<?php echo base_url(); ?>add-photo">Add Image</a></li>
                                                 <li><a href="<?php echo base_url(); ?>photo-list">Image List</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         
-										<li><a><i class="fa fa-edit"></i> Pages<span class="fa fa-chevron-down"></span></a>
+										<!-- <li><a><i class="fa fa-edit"></i> Pages<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 <li><a href="<?php echo base_url(); ?>new-page">New Page</a></li>
                                                 <li><a href="<?php echo base_url(); ?>page-list">Page List</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
 										
 										<li><a href="<?php echo base_url(); ?>meta"><i class="fa fa-edit"></i> Website Info</a></li>
 										

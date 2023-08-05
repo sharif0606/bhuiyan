@@ -60,6 +60,34 @@
                                     <input value="<?= $all_meta_data->site_email;?>" placeholder="E-mail" type="text" id="last-name" name="site_email" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_email">Facebook <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input value="<?= $all_meta_data->fb_url;?>" placeholder="Facebook" type="text" id="fb-url" name="fb_url" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_email">Youtube <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input value="<?= $all_meta_data->youtube_url;?>" placeholder="Youtube" type="text" id="youtube-url" name="youtube_url" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_email">LinkedIn <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input value="<?= $all_meta_data->linkedin_url;?>" placeholder="Linkedin" type="text" id="linkedin-url" name="linkedin_url" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="site_email">Twitter <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input value="<?= $all_meta_data->twitter_url;?>" placeholder="Twitter" type="text" id="twitter-url" name="twitter_url" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
 							
 							<div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Home Description <span>*</span></label>

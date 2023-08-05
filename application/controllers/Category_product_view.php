@@ -29,6 +29,7 @@ class Category_product_view extends CI_Controller{
     }
     
     public function product_info_view_sub($none,$pro_cats_id){
+
         $data=array();
         $data['all_meta_data']=$this->meta_model->all_meta_data();
         $data['categories']=$this->db->query("select * from tbl_category where category_type=3 and show_front=1")->result();
@@ -41,7 +42,8 @@ class Category_product_view extends CI_Controller{
             $data['all_blog_data']=$this->blog_view_model->all_blog_sub_info($pro_cats_id,$q);
         else
             $data['all_blog_data']=$this->blog_view_model->all_blog_sub_info($pro_cats_id);
-        
+            $data['all_brand']=$this->blog_model->all_brand();
+            $data['home_page_product_popular']=$this->master_model->home_page_product('popular_item');
         $data['main_content']=$this->load->view('frontend/pages/category_view',$data,true);
         $this->load->view('frontend/master',$data);
     }
