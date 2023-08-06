@@ -33,6 +33,8 @@ class Master_model extends CI_Model {
         $this->db->order_by('news_id', 'DESC');
         $query_result = $this->db->get();
         $res = $query_result->row();
+        echo '<pre>';
+        print_r($res);die;
         return $res;
     }
 	
