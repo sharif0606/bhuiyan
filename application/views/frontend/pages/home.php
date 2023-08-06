@@ -1,4 +1,4 @@
-<?php if(!empty($slide_news_1st){ ?>
+<?php if(!empty($slide_news_1st)){ ?>
         <!-- slider fix img -->
         <div class="slider-img" style="background-image: url('<?php echo base_url() . $slide_news_1st->news_image; ?>')">
             <div class="bg-overlay">
