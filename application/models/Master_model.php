@@ -28,7 +28,7 @@ class Master_model extends CI_Model {
 	public function slide_news_1st() {
         $this->db->select('*');
         $this->db->from('tbl_news');
-        $this->db->where('fk_news_id',1);
+        $this->db->where('fk_news_id',4);
         $this->db->where('news_status',1);	
         $this->db->order_by('news_id', 'DESC');
         $query_result = $this->db->get();
