@@ -1,4 +1,3 @@
-<?php if($slide_news_1st){ ?>
         <!-- slider fix img -->
         <div class="slider-img" style="background-image: url('<?php echo base_url() . $slide_news_1st->news_image; ?>')">
             <div class="bg-overlay">
@@ -15,7 +14,7 @@
                 </div>
             </div>
         </div>
-<?php } ?>        
+     
         <!-- Our Categories  -->
         <div id="product-catagory" class="catagory pt-5">
             <!-- catagory title -->
