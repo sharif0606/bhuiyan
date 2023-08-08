@@ -22,7 +22,7 @@ class Page_model extends CI_Model {
 		
         $this->db->select('*');
         $this->db->from('tbl_page');
-        $this->db->where('status',1);
+        $this->db->where('page_status',1);
         $this->db->order_by('page_id', 'DESC');
         $query_result = $this->db->get();
         $page_info = $query_result->result();
