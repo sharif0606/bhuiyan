@@ -41,10 +41,10 @@
 <?php // Get the current URL
         $currentUrl = base_url(uri_string()); 
         // Split the path into segments
-$segments = explode('/', trim($currentUrl, '/'));
+$segments = array_values(explode('/', trim($currentUrl, '/')));
 print_r($segments);
-$elementToCheck = "all-products-sub";
-if (in_array($elementToCheck, $segments)) {
+
+if (in_array("all-products-sub";, $segments)) {
         ?>
       <?php foreach ($all_blog_data as $abd) { ?>
         <div class="col-sm-4 col-md-3 mb-3">
