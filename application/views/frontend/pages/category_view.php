@@ -21,7 +21,7 @@
   <div class="container card-div my-5">
     <div class="row mt-4">
       <?php
-      foreach ($categories as $hppr) {
+      //foreach ($categories as $hppr) {
         $sub = $this->db->query("select * from tbl_sub_category where category_id=$c_id")->result();
         echo $this->db->last_query();die;
         if ($sub) {
@@ -37,7 +37,7 @@
             </div>
       <?php }
         }
-      } ?>
+      //} ?>
 
       <?php foreach ($all_blog_data as $abd) { ?>
         <!-- <div class="col-sm-4 col-md-3 mb-3">
