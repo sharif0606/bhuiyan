@@ -42,6 +42,7 @@
         $currentUrl = base_url(uri_string()); 
         // Split the path into segments
 $segments = explode('/', trim($currentUrl, '/'));
+print_r($segments);
 $elementToCheck = "all-products-sub";
 if (in_array($elementToCheck, $segments)) {
         ?>
