@@ -40,7 +40,9 @@
       //} ?>
 <?php // Get the current URL
         $currentUrl = base_url(uri_string()); 
-        echo $currentUrl;
+        // Split the path into segments
+$segments = explode('/', trim($path, '/'));
+print_r($segments);die;
         ?>
       <?php foreach ($all_blog_data as $abd) { ?>
         <!-- <div class="col-sm-4 col-md-3 mb-3">
