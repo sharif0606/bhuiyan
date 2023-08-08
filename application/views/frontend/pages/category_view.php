@@ -38,7 +38,10 @@
       <?php }
         }
       //} ?>
-
+<?php // Get the current URL
+        $currentUrl = base_url(uri_string()); 
+        echo $currentUrl;
+        ?>
       <?php foreach ($all_blog_data as $abd) { ?>
         <!-- <div class="col-sm-4 col-md-3 mb-3">
           <a class="text-decoration-none" href="<?= base_url() . "product-view/" . $abd->category_name . "/" . $abd->news_name . "/" . $abd->news_id . "/" . $abd->fk_news_id; ?>">
