@@ -39,12 +39,7 @@
         }
       //} ?>
 <?php // Get the current URL
-        $currentUrl = base_url(uri_string()); 
-        // Split the path into segments
-$segments = explode('/', trim($currentUrl, '/'));
-$data = array_values($segments);
-print_r($data);
-
+$currentUrl = base_url(uri_string()); 
 if (in_array('all-products-sub',  explode('/', trim($currentUrl, '/')))) {
         ?>
       <?php foreach ($all_blog_data as $abd) { ?>
