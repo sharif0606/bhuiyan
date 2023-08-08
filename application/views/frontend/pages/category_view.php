@@ -23,7 +23,7 @@
       <?php
       //foreach ($categories as $hppr) {
         $sub = $this->db->query("select * from tbl_sub_category where category_id=$c_id")->result();
-        echo $this->db->last_query();die;
+        //echo $this->db->last_query();die;
         if ($sub) {
           foreach ($sub as $sub_c) {
       ?>
