@@ -151,12 +151,12 @@
                                             </ul>
                                         </li> -->
                                         
-										<!-- <li><a><i class="fa fa-edit"></i> Pages<span class="fa fa-chevron-down"></span></a>
+										<li><a><i class="fa fa-edit"></i> Pages<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 <li><a href="<?php echo base_url(); ?>new-page">New Page</a></li>
                                                 <li><a href="<?php echo base_url(); ?>page-list">Page List</a></li>
                                             </ul>
-                                        </li> -->
+                                        </li>
 										
 										<li><a href="<?php echo base_url(); ?>meta"><i class="fa fa-edit"></i> Website Info</a></li>
 										
