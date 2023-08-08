@@ -51,6 +51,7 @@ class Sub_category_model extends CI_Model {
         //$this->db->where('status',1);
         $this->db->order_by('sub_category_id', 'desc');
         $query_result = $this->db->get();
+        echo $this->db->last_query();die;
         $category_info = $query_result->result();
         return $category_info;
     }
