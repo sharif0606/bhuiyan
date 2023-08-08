@@ -23,6 +23,7 @@
       <?php
       foreach ($categories as $hppr) {
         $sub = $this->db->query("select * from tbl_sub_category where category_id=$c_id")->result();
+        echo $this->db->last_query();die;
         if ($sub) {
           foreach ($sub as $sub_c) {
       ?>
@@ -39,7 +40,7 @@
       } ?>
 
       <?php foreach ($all_blog_data as $abd) { ?>
-        <div class="col-sm-4 col-md-3 mb-3">
+        <!-- <div class="col-sm-4 col-md-3 mb-3">
           <a class="text-decoration-none" href="<?= base_url() . "product-view/" . $abd->category_name . "/" . $abd->news_name . "/" . $abd->news_id . "/" . $abd->fk_news_id; ?>">
             <div class="card shadow">
               <img src="<?= base_url() . $abd->news_image; ?>" class="card-img-top" alt="..." width="100%" style="height:203px !important" />
@@ -48,7 +49,7 @@
               </div>
             </div>
           </a>
-        </div>
+        </div> -->
       <?php } ?>
     </div>
   </div>
