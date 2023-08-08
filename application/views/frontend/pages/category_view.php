@@ -44,7 +44,7 @@
 $segments = array_values(explode('/', trim($currentUrl, '/')));
 print_r($segments);
 
-if (in_array("all-products-sub";, $segments)) {
+if (in_array("all-products-sub", $segments)) {
         ?>
       <?php foreach ($all_blog_data as $abd) { ?>
         <div class="col-sm-4 col-md-3 mb-3">
