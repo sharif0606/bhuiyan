@@ -43,7 +43,7 @@
         // Split the path into segments
 $segments = explode('/', trim($currentUrl, '/'));
 $data = array_values($segments);
-print_r($segments);
+print_r($data);
 
 if (in_array("all-products-sub", $segments)) {
         ?>
