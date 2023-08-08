@@ -41,7 +41,8 @@
 <?php // Get the current URL
         $currentUrl = base_url(uri_string()); 
         // Split the path into segments
-$segments = array_values(explode('/', trim($currentUrl, '/')));
+$segments = explode('/', trim($currentUrl, '/'));
+$data = array_values($segments);
 print_r($segments);
 
 if (in_array("all-products-sub", $segments)) {
