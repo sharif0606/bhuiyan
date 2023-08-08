@@ -1,3 +1,4 @@
+<?php $currentUrl = base_url(uri_string()); ?>
 <div class="container">
   <!-- breadcrumb -->
   <nav aria-label="breadcrumb pt-5">
@@ -14,7 +15,11 @@
 <div id="product-catagory mt-5 pt-5" class="catagory pt-5">
   <!-- catagory title -->
   <p class="h2 text-center text-dark pt-5 mb-3 catagory-div-title">
-    Our Products Sub Categories
+    <?php if (in_array('all-products-sub',  explode('/', trim($currentUrl, '/')))) { ?>
+      Our Sub Categories Products
+    <?php } else { ?>  
+      Our Sub Categories
+    <?php } ?>  
   </p>
   <div class="div-line m-auto mb-5"></div>
   <!-- product card -->
@@ -39,7 +44,7 @@
         }
       //} ?>
 <?php // Get the current URL
-$currentUrl = base_url(uri_string()); 
+
 if (in_array('all-products-sub',  explode('/', trim($currentUrl, '/')))) {
         ?>
       <?php foreach ($all_blog_data as $abd) { ?>
