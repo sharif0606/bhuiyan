@@ -35,7 +35,7 @@
                         if (!isset($pages_print[$page])) {
                         $pages_print[$page] = true;
                         ?>
-                        <div class="col-sm-6 col-md-4 pb-3">
+                        <div class="cat col-sm-6 col-md-4 pb-3">
                             <a href="<?php echo base_url();?>all-products/<?= $page;?>/<?= $cid;?>">
                                 <div class="d-flex card-sm-responsib">
                                     <img class="img-fluid" src="<?= base_url().$v_cat->category_image;?>" alt="" />
