@@ -98,7 +98,13 @@
           Submit Your Order Details
         </p>
         <div class="div-line m-auto mb-5"></div>
-
+        <?php
+        $message = $this->session->userdata('message');
+        if ($message) {
+          echo "<h5 class='no_padding'>" . $message . "</h5><br>";
+          $this->session->unset_userdata('message');
+        }
+        ?>
         <!-- product card -->
         <div class="container card-div my-5">
           <div>
@@ -110,7 +116,7 @@
                   <p class="fw-bold border-bottom border-3 border-primary pb-2">
                     Submit Your Quaries :
                   </p>
-                  <form action="">
+                  <form action="<?php echo base_url(); ?>contact-send">
                     <div class="row">
                       <div class="col-sm-12 col-md-12 col-xl-6">
                         <div class="mb-3">
@@ -123,7 +129,7 @@
                             type="text"
                             class="form-control"
                             id="exampleFormControlInput1"
-                            placeholder="ex: Mr. John"
+                            placeholder="ex: Mr. John" required  name="contact_name"
                           />
                         </div>
                         <div class="mb-3">
@@ -136,7 +142,7 @@
                             type="email"
                             class="form-control"
                             id="exampleFormControlInput1"
-                            placeholder="name@example.com"
+                            placeholder="name@example.com" required name="contact_email"
                           />
                         </div>
                       </div>
@@ -151,7 +157,7 @@
                             type="email"
                             class="form-control"
                             id="exampleFormControlInput1"
-                            placeholder="ABC Inc."
+                            placeholder="ABC Inc." required name="contact_subject"
                           />
                         </div>
                         <div class="mb-3">
@@ -163,7 +169,7 @@
                           <textarea
                             class="form-control"
                             id="exampleFormControlTextarea1"
-                            rows="3"
+                            rows="3" required name="contact_message"
                           ></textarea>
                         </div>
                         <div class="col-auto d-flex justify-content-end">

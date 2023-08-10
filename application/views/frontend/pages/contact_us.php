@@ -70,11 +70,11 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" class="form-control" name="contact_subject" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <input type="email" class="form-control" name="contact_email" id="exampleFormControlInput1" placeholder="name@example.com" />
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Your Company Name</label>
-                <input type="email" class="form-control" name="company_name"id="exampleFormControlInput1" placeholder="ABC Inc." />
+                <input type="email" class="form-control" name="contact_subject" id="exampleFormControlInput1" placeholder="ABC Inc." />
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Massege</label>
