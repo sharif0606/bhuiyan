@@ -32,7 +32,7 @@
         if ($sub) {
           foreach ($sub as $sub_c) {
       ?>
-            <div class="cat col-sm-6 col-md-4 pb-3">
+            <div class="col-sm-6 col-md-4 pb-3">
               <a href="<?= base_url(); ?>all-products-sub/<?= $sub_c->category_name ?>/<?= $sub_c->sub_category_id ?>" title="<?= $sub_c->category_name; ?>">
                 <div class="d-flex card-sm-responsib">
                   <img class="img-fluid" src="<?= base_url() . $sub_c->category_image; ?>" alt="" />
