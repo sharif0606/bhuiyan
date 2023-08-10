@@ -154,7 +154,7 @@
                             >Your Company Name</label
                           >
                           <input
-                            type="email"
+                            type="text"
                             class="form-control"
                             id="exampleFormControlInput1"
                             placeholder="ABC Inc." required name="contact_subject"
