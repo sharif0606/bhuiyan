@@ -69,6 +69,10 @@ nav button {
   height: 80px;
   border-radius: 50%;
 }
+.gallery .card-div img{
+  width: 80px;
+  height: 80px;
+}
 .card-div a {
   text-decoration: none;
 }

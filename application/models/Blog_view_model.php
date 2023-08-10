@@ -20,6 +20,7 @@ class Blog_view_model extends CI_Model {
     }
     
     public function all_blog_filter_info($pro_cats_id,$q=false) {
+        
 		$this->db->select('tbl_news.*,tbl_category.*');
         $this->db->from('tbl_news');
         $this->db->join('tbl_category','tbl_category.category_id=tbl_news.fk_news_id','left');
@@ -34,11 +35,18 @@ class Blog_view_model extends CI_Model {
     }
     
     public function all_blog_info($limit, $start,$q=false) {
+        $categories=$this->db->query("select category_id from tbl_category where category_type=3 and show_front=1")->result();
+        $categoryIds = array(); // Create an array to store category IDs
+        foreach ($categories as $category) {
+            $categoryIds[] = $category->category_id; // Store each category_id in the array
+        }
+
         $this->db->limit($limit, $start);
 		$this->db->select('tbl_news.*,tbl_category.*');
         $this->db->from('tbl_news');
         $this->db->join('tbl_category','tbl_category.category_id=tbl_news.fk_news_id','left');
         $this->db->where('news_status', '1');
+        $this->db->where_in('fk_news_id', $categoryIds);
         
         if($q)
             $this->db->where('brand', $q);

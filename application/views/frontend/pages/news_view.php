@@ -24,7 +24,7 @@
         <div class="div-line m-auto mb-5"></div>
         
         <!-- product card -->
-        <div class="container card-div my-5 product-img">
+        <div class="container gallery card-div my-5 product-img">
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="product-main-img border rounded shadow">
