@@ -23,11 +23,22 @@ class Contact extends CI_Controller{
     
 	public function contact_send()
     {
-        $this->contact_model->send_contact();
-        $sdata=array();
-        $sdata['message']="Sent successfully";
-        $this->session->set_userdata($sdata);
+        if($this->contact_model->send_contact()){
+            $sdata=array();
+            $sdata['message']="Sent successfully";
+            $this->session->set_userdata($sdata);
+        }
+        
 		redirect('contact-us');
+    }
+
+    public function all_contact_info(){
+        $data=array();
+        
+        $data['all_contact_info']=$this->contact_model->all_contact_info();
+        
+        $data['admin_main_content']=$this->load->view('backend/pages/contact_info_list',$data,true);
+        $this->load->view('backend/admin_master', $data);
     }
 	
 }

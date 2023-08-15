@@ -162,6 +162,10 @@
 										
 										<li><a href="<?php echo base_url(); ?>settings"><i class="fa fa-edit"></i> User Settings</a></li>
 
+
+                                        <!-- <li><a href="<?php echo base_url(); ?>contact/all_contact_info"><i class="fa fa-edit"></i>Contact</a></li> -->
+                                           
+
                                     </ul>
                                 </div>
                                 

@@ -63,7 +63,7 @@
             <p class="fw-bold border-bottom border-3 border-primary pb-2">
               Submit Your Quaries :
             </p>
-            <form action="<?php echo base_url(); ?>contact-send">
+            <form action="<?php echo base_url(); ?>contact-send" method="post">
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="contact_name" placeholder="ex: Mr. John" />
@@ -79,6 +79,9 @@
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Massege</label>
                 <textarea class="form-control" name="contact_message" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+              <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6LeelaknAAAAAKpKkYJLyPNl_I3YRjvUwcBLrM9G"></div>
               </div>
               <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3">

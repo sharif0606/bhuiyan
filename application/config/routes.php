@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  $route['blog/(.+)'] = 'blog_view/blog_info_view/$1';
  $route['all-photo'] = 'photo_view/all_photo'; 
 
+ $route['contact-all'] = 'contact/all_contact_info';
  $route['contact-us'] = 'contact/index';
  $route['contact-send'] = 'contact/contact_send';
  $route['cart'] = 'cartctrl/index';
